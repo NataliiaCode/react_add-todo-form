@@ -15,8 +15,8 @@ export const App = () => {
   const [userError, setUserError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setSubmitted(true);
 
     if (!title) {
@@ -71,8 +71,10 @@ export const App = () => {
     setSubmitted(false);
   };
 
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+  const handleTitleChange = (
+    changeEvent: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setTitle(changeEvent.target.value);
     setTitleError(false);
     setSubmitted(false);
   };
