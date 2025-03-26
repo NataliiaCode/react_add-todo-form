@@ -31,15 +31,36 @@ export const App = () => {
       return;
     }
 
-    const newTodo = {
-      id:
-        todos.length > 0
-          ? Math.max(...todos.map((todo: Todo) => todo.id)) + 1
-          : 1,
+    // Add todo
+    const foundUser = users.find(
+      currentUser => currentUser.id === selectedUser,
+    ); //Renamed parameter
+
+    // const newTodo = {
+    //   id:
+    //     todos.length > 0
+    //       ? Math.max(...todos.map((todo: Todo) => todo.id)) + 1
+    //       : 1,
+    //   title: title,
+    //   userId: selectedUser,
+    //   completed: false,
+    //   user: users.find(user => user.id === selectedUser),
+    // };
+
+    if (!foundUser) {
+      setUserError(true);
+
+      return;
+    }
+
+    const newTodo: Todo = {
+      //Explicit typing for clarity
+      id: todos.length > 0 ? Math.max(...todos.map(todo => todo.id)) + 1 : 1,
       title: title,
       userId: selectedUser,
       completed: false,
-      user: users.find(user => user.id === selectedUser),
+      // user: user, // use the found user here
+      user: foundUser,
     };
 
     setTodos([...todos, newTodo]);

@@ -4,7 +4,6 @@ import { UserInfo } from '../UserInfo';
 
 import { Todo } from '../../types/Todo';
 
-
 interface Props {
   todo: Todo;
 }
